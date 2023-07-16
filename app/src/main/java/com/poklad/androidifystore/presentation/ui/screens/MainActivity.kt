@@ -1,4 +1,4 @@
-package com.poklad.androidifystore.presentation.ui
+package com.poklad.androidifystore.presentation.ui.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
