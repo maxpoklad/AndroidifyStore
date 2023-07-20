@@ -1,7 +1,8 @@
-package com.poklad.androidifystore
+package com.poklad.androidifystore.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.poklad.androidifystore.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
