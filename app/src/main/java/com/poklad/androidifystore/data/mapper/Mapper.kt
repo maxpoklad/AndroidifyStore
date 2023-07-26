@@ -1,5 +1,5 @@
 package com.poklad.androidifystore.data.mapper
 
-interface Mapper<SRC, DST> {
-    fun transform(data: SRC): DST
+interface Mapper<Source, Destination> {
+    fun map(data: Source): Destination
 }

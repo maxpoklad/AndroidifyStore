@@ -1,8 +1,8 @@
-package com.poklad.androidifystore.data.remote.dto
+package com.poklad.androidifystore.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductDtoItem(
+data class ProductItemModel(
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")

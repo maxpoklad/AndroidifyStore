@@ -8,10 +8,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 object NetworkModule {
-
     @Provides
     fun providesStoreApi(retrofit: Retrofit): StoreApi {
         return retrofit.create(StoreApi::class.java)
@@ -27,6 +27,7 @@ object NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideRetrofitInstance(
         okHttpClient: OkHttpClient
     ): Retrofit {

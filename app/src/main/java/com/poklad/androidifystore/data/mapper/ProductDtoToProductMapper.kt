@@ -1,10 +1,10 @@
 package com.poklad.androidifystore.data.mapper
 
-import com.poklad.androidifystore.data.remote.dto.ProductDtoItem
+import com.poklad.androidifystore.data.remote.model.ProductItemModel
 import com.poklad.androidifystore.domain.model.ProductItem
 
-class ProductDtoToProductMapper : Mapper<ProductDtoItem, ProductItem> {
-    override fun transform(data: ProductDtoItem): ProductItem {
+class ProductDtoToProductMapper : Mapper<ProductItemModel, ProductItem> {
+    override fun map(data: ProductItemModel): ProductItem {
         return ProductItem(
             id = data.id,
             title = data.title,
