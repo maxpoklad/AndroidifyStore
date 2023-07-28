@@ -6,7 +6,4 @@ import com.poklad.androidifystore.utils.DispatchersProvider
 abstract class BaseViewModel(
     val dispatchers: DispatchersProvider
 ) : ViewModel() {
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

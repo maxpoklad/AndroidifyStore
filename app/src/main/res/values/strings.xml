@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidifyStore</string>
+    <string name="mens_cotton_jacket">Mens Cotton Jacket</string>
+    <string name="price_value">100.44$</string>
+    <string name="add_products_to_favorite">add products to favorite</string>
+    <string name="product_s_image">product\'s image</string>
 </resources>

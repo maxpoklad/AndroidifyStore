@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_width">300dp</dimen>
+    <dimen name="image_height">350dp</dimen>
+    <dimen name="itemCardElevation">8dp</dimen>
+    <dimen name="itemCardRadius">12dp</dimen>
+    <dimen name="projectMargin">8dp</dimen>
+    <dimen name="text_size_in_item">18sp</dimen>
+</resources>

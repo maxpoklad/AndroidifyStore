@@ -2,7 +2,6 @@ package com.poklad.androidifystore.data.repositories
 
 import com.poklad.androidifystore.data.mapper.ProductDtoToProductMapper
 import com.poklad.androidifystore.data.remote.StoreApi
-import com.poklad.androidifystore.data.remote.model.ProductItemModel
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.repositories.ProductsRepository
 
