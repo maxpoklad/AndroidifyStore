@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
+
     private var _binding: VB? = null
     protected val binding: VB? = _binding
     protected abstract val viewModel: VM
@@ -16,18 +17,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflateBinding(inflater, container)
-        /*
-                viewModel = ViewModelProvider(this)[getViewModelClass()]
-        */
+        super.onCreateView(inflater, container, savedInstanceState)
+        _binding = getViewBinding()
         return _binding?.root
     }
 
-    protected abstract fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): VB
-
-    /*
-        abstract fun getViewModelClass(): Class<VM>
-    */
+    abstract fun getViewBinding(): VB
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

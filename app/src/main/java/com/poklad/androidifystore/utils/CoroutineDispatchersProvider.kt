@@ -1,7 +1,7 @@
 package com.poklad.androidifystore.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
-interface DispatchersProvider {
+interface CoroutineDispatchersProvider {
     fun getIO(): CoroutineDispatcher
     fun getMain(): CoroutineDispatcher
     fun getUnconfined(): CoroutineDispatcher
