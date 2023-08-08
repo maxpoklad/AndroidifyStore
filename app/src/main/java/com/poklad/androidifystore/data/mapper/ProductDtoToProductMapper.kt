@@ -2,8 +2,9 @@ package com.poklad.androidifystore.data.mapper
 
 import com.poklad.androidifystore.data.remote.model.ProductItemModel
 import com.poklad.androidifystore.domain.model.ProductItem
+import javax.inject.Inject
 
-class ProductDtoToProductMapper : Mapper<ProductItemModel, ProductItem> {
+class ProductDtoToProductMapper @Inject constructor() : Mapper<ProductItemModel, ProductItem> {
     override fun map(data: ProductItemModel): ProductItem {
         return ProductItem(
             id = data.id,
