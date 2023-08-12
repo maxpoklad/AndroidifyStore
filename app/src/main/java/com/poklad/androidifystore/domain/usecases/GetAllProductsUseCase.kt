@@ -9,28 +9,24 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-typealias GetAllProductsBaseUseCaseSuspend = BaseUseCaseSuspend<Unit, List<ProductItem>>
+typealias GetAllProductsBaseUseCaseSuspend = UseCaseSuspend<Unit, List<ProductItem>>
 
 class GetAllProductsUseCase @Inject constructor(
     private val repository: ProductsRepository,
 ) : GetAllProductsBaseUseCaseSuspend {
-    override suspend fun invoke(params: Unit): Flow<Resource<List<ProductItem>>> = flow {
-        emit(Resource.Loading(true))
+    override suspend fun execute(params: Unit): Flow<Resource<List<ProductItem>>> = flow {
+        emit(Resource.Loading())
         try {
             emit(Resource.Success(repository.getAllProducts()))
         } catch (e: HttpException) {
             emit(
-                Resource.Error(
-                    message = "Oops, something went wrong!"
-                )
+                Resource.Error(e.cause)
             )
         } catch (e: IOException) {
             emit(
-                Resource.Error(
-                    message = "Couldn't reach server, check your internet connection."
-                )
+                Resource.Error(e.cause)
             )
         }
-        emit(Resource.Loading(false))
+        emit(Resource.Loading())
     }
 }

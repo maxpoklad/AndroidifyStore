@@ -10,15 +10,12 @@ import com.poklad.androidifystore.databinding.FragementAllProductsBinding
 import com.poklad.androidifystore.presentation.ui.base.BaseFragment
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class AllProductsFragment(
 ) : BaseFragment<FragementAllProductsBinding, BaseViewModel>() {
 
     override val viewModel: AllProductsViewModel by viewModels()
-
-    @Inject
-    lateinit var adapter: AllProductsAdapter
+    private lateinit var adapter: AllProductsAdapter
     override fun getViewBinding(): FragementAllProductsBinding =
         FragementAllProductsBinding.inflate(layoutInflater)
 
@@ -38,8 +35,9 @@ class AllProductsFragment(
     }
 
     private fun setUpRecyclerView() {
-        val recycleView = binding?.recycleViewProductList
-        recycleView?.layoutManager = LinearLayoutManager(requireActivity())
-        recycleView?.adapter = adapter
+        binding?.recycleViewProductList?.apply {
+            layoutManager = LinearLayoutManager(requireActivity())
+            adapter = adapter
+        }
     }
 }

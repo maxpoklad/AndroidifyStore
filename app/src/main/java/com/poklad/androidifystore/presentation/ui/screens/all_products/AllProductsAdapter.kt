@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.poklad.androidifystore.databinding.ItemProductBinding
 import com.poklad.androidifystore.domain.model.ProductItem
-import javax.inject.Inject
 
-class AllProductsAdapter @Inject constructor() :
+class AllProductsAdapter() :
     RecyclerView.Adapter<AllProductsAdapter.ProductsHolder>() {
     private val differCallback = object : DiffUtil.ItemCallback<ProductItem>() {
         override fun areItemsTheSame(oldItem: ProductItem, newItem: ProductItem): Boolean {

@@ -4,7 +4,7 @@
     android:id="@+id/cardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/projectMargin"
+    android:layout_margin="@dimen/itemMargin"
     android:backgroundTint="@color/white"
     app:cardCornerRadius="@dimen/itemCardRadius"
     app:cardElevation="@dimen/itemCardElevation"
@@ -23,7 +23,6 @@
             android:src="@drawable/image_test_jacket"
             app:layout_constraintBottom_toTopOf="@+id/titleTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
