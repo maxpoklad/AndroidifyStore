@@ -29,8 +29,8 @@ class AllProductsViewModel @Inject constructor(
 
     fun getAllProductsLiveData() {
         launchCoroutineIO {
-            getAllProductsUseCase.invoke(Unit).collect {
-                _allProductsLiveData.value = it.data ?: emptyList()
+            getAllProductsUseCase.execute(Unit).collect {
+                TODO()
             }
         }
     }
@@ -38,7 +38,7 @@ class AllProductsViewModel @Inject constructor(
     fun getAllProducts() {
         launchCoroutineIO {
             try {
-                val products = getAllProductsUseCase.invoke(Unit)
+                val products = getAllProductsUseCase.execute(Unit)
                 products.collect { productsResource ->
                     when (productsResource) {
                         is Resource.Success -> {

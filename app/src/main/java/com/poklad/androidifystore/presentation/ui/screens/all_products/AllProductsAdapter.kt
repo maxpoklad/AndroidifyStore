@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.poklad.androidifystore.databinding.ItemProductBinding
 import com.poklad.androidifystore.domain.model.ProductItem
+import com.poklad.androidifystore.presentation.ui.base.BaseAdapter
 
 class AllProductsAdapter() :
-    RecyclerView.Adapter<AllProductsAdapter.ProductsHolder>() {
+    BaseAdapter<ProductItem>() {
+
     private val differCallback = object : DiffUtil.ItemCallback<ProductItem>() {
         override fun areItemsTheSame(oldItem: ProductItem, newItem: ProductItem): Boolean {
             return oldItem.id == newItem.id
@@ -20,36 +22,24 @@ class AllProductsAdapter() :
             return oldItem == newItem
         }
     }
-    val differList = AsyncListDiffer(this, differCallback)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsHolder {
+    override val differList = AsyncListDiffer(this, differCallback)
+    override fun getViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
             ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductsHolder(binding)
     }
 
-    override fun getItemCount(): Int = differList.currentList.size
-
-    override fun onBindViewHolder(holder: ProductsHolder, position: Int) {
-        holder.bind(differList.currentList[position])
-    }
-
-    private var onItemClickListener: ((ProductItem) -> Unit)? = null
-    fun setOnItemClickListener(listener: (ProductItem) -> Unit) {
-        onItemClickListener = listener
-    }
-
     inner class ProductsHolder(val binding: ItemProductBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ProductItem) {
+        RecyclerView.ViewHolder(binding.root), Binder<ProductItem> {
+        override fun bind(item: ProductItem) {
             binding.apply {
-                titleTextView.text = product.title
-                priceButton.text = product.price
+                titleTextView.text = item.title
+                priceButton.text = item.price
                 Glide.with(itemView.context)
-                    .load(product.image)
+                    .load(item.image)
                     .into(productImageView)
                 root.setOnClickListener {
-                    onItemClickListener?.let { it(product) }
+                    onItemClickListener?.let { it(item) }
                 }
             }
         }
