@@ -9,7 +9,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel(
-    val dispatchers: CoroutineDispatchersProvider
+    private val dispatchers: CoroutineDispatchersProvider
 ) : ViewModel() {
 
     private val job = Job()

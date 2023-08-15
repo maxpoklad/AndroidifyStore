@@ -13,11 +13,13 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
     @Provides
+    @Singleton
     fun providesStoreApi(retrofit: Retrofit): StoreApi {
         return retrofit.create(StoreApi::class.java)
     }
 
     @Provides
+    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
         val interceptor = HttpLoggingInterceptor()
