@@ -1,25 +1,40 @@
 package com.poklad.androidifystore.presentation.ui.screens.all_products
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidifystore.R
+import com.poklad.androidifystore.StoreApp
 import com.poklad.androidifystore.databinding.FragementAllProductsBinding
+import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.presentation.ui.base.BaseFragment
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.utils.Resource
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class AllProductsFragment(
 ) : BaseFragment<FragementAllProductsBinding, BaseViewModel>() {
 
-    override val viewModel: AllProductsViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    override val viewModel: AllProductsViewModel by viewModels() {
+        viewModelFactory
+    }
     private val allProductsAdapter: AllProductsAdapter by lazy {
         AllProductsAdapter()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as StoreApp).appComponent.inject(this@AllProductsFragment)
     }
 
     override fun getViewBinding(): FragementAllProductsBinding =
@@ -39,6 +54,7 @@ class AllProductsFragment(
                     is Resource.Success -> {
                         binding?.apply {
                             progressBarAllProducts.visibility = View.GONE
+                            renderList(resource.data)
                             recycleViewProductList.visibility = View.VISIBLE
                         }
                     }
@@ -58,9 +74,17 @@ class AllProductsFragment(
                             Toast.LENGTH_LONG
                         ).show()
                     }
+
+                    else -> {
+
+                    }
                 }
             }
         }
+    }
+
+    private fun renderList(productsList: List<ProductItem>) {
+        allProductsAdapter.list = productsList
     }
 
     private fun initRecyclerView() {

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.emitAll
 import javax.inject.Inject
 
-class AllProductsViewModel /*@Inject constructor*/(
+class AllProductsViewModel @Inject constructor(
     coroutineDispatchersProvider: CoroutineDispatchersProvider,
     private val getAllProductsUseCase: GetAllProductsUseCase,
 ) : BaseViewModel(coroutineDispatchersProvider) {

@@ -5,7 +5,9 @@ import com.poklad.androidifystore.data.remote.StoreApi
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.repositories.ProductsRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ProductsRemoteRepositoryImpl @Inject constructor(
     private val storeApi: StoreApi,
     private val mapper: ProductDtoToProductMapper

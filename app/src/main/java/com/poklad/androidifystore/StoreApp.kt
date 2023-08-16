@@ -11,7 +11,7 @@ class StoreApp : Application() {
     }
 
     private fun initializationComponent(): AppComponent {
-        return DaggerAppComponent.factory().create(this)
+        return DaggerAppComponent.factory().create(applicationContext)
     }
 
 }

@@ -29,7 +29,7 @@ class AllProductsAdapter() :
         return ProductsHolder(binding)
     }
 
-    inner class ProductsHolder(val binding: ItemProductBinding) :
+    inner class ProductsHolder(private val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root), Binder<ProductItem> {
         override fun bind(item: ProductItem) {
             binding.apply {
