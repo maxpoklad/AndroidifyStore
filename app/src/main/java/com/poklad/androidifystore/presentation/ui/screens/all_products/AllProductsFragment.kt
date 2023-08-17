@@ -19,8 +19,7 @@ import com.poklad.androidifystore.utils.Resource
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AllProductsFragment(
-) : BaseFragment<FragementAllProductsBinding, BaseViewModel>() {
+class AllProductsFragment : BaseFragment<FragementAllProductsBinding, BaseViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,7 +33,7 @@ class AllProductsFragment(
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as StoreApp).appComponent.inject(this@AllProductsFragment)
+        StoreApp.daggerComponent.inject(this)
     }
 
     override fun getViewBinding(): FragementAllProductsBinding =
@@ -42,7 +41,6 @@ class AllProductsFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findNavController().navigate(R.id.action_allProductsFragment_to_homeScreenFragment)
         initRecyclerView()
         setUpObserver()
     }

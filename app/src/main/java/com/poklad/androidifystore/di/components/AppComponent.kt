@@ -1,8 +1,10 @@
-package com.poklad.androidifystore.di
+package com.poklad.androidifystore.di.components
 
 import android.content.Context
 import com.poklad.androidifystore.di.modules.DispatcherModule
 import com.poklad.androidifystore.di.modules.NetworkModule
+import com.poklad.androidifystore.di.modules.RepositoryModule
+import com.poklad.androidifystore.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidifystore.di.viewModel.ViewModelModule
 import com.poklad.androidifystore.presentation.MainActivity
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment
@@ -15,7 +17,9 @@ import javax.inject.Singleton
     modules = [
         NetworkModule::class,
         DispatcherModule::class,
-        ViewModelModule::class]
+        ViewModelModule::class,
+        ViewModelFactoryModule::class,
+        RepositoryModule::class]
 )
 interface AppComponent {
     @Component.Factory

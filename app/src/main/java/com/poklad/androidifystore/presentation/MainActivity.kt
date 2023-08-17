@@ -18,7 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as StoreApp).appComponent.inject(this@MainActivity)
+        StoreApp.daggerComponent.inject(this@MainActivity)//todo is there we must doing a appComponent call?
         super.onCreate(savedInstanceState)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment

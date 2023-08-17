@@ -6,6 +6,6 @@ import kotlin.reflect.KClass
 
 @MapKey
 @MustBeDocumented
-@kotlin.annotation.Target(allowedTargets = [AnnotationTarget.FUNCTION])
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+@Target(allowedTargets = [AnnotationTarget.FUNCTION])
+@Retention(AnnotationRetention.RUNTIME)
 annotation class ViewModelKey(val value: KClass<out ViewModel>)

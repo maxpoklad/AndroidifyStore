@@ -1,25 +1,16 @@
 package com.poklad.androidifystore.di.viewModel
 
+import androidx.lifecycle.ViewModel
 import com.poklad.androidifystore.di.annotations.ViewModelKey
-import com.poklad.androidifystore.domain.usecases.GetAllProductsUseCase
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsViewModel
-import com.poklad.androidifystore.utils.CoroutineDispatchersProvider
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
 
-@Module(includes = [ViewModelFactoryModule::class])
-class ViewModelModule {
+@Module
+abstract class ViewModelModule {
+    @Binds
     @IntoMap
     @ViewModelKey(AllProductsViewModel::class)
-    @Provides
-    fun provideAllProductViewModel(
-        coroutineDispatchersProvider: CoroutineDispatchersProvider,
-        getAllProductsUseCase: GetAllProductsUseCase
-    ): AllProductsViewModel {
-        return AllProductsViewModel(
-            coroutineDispatchersProvider = coroutineDispatchersProvider,
-            getAllProductsUseCase = getAllProductsUseCase
-        )
-    }
+    abstract fun bindYourViewModel(yourViewModel: AllProductsViewModel): ViewModel
 }
