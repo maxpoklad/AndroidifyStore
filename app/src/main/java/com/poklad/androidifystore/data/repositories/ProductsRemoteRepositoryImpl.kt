@@ -4,6 +4,7 @@ import com.poklad.androidifystore.data.mapper.ProductDtoToProductMapper
 import com.poklad.androidifystore.data.remote.StoreApi
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.repositories.ProductsRepository
+import com.poklad.androidifystore.utils.log
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,6 +14,7 @@ class ProductsRemoteRepositoryImpl @Inject constructor(
     private val mapper: ProductDtoToProductMapper
 ) : ProductsRepository {
     override suspend fun getAllProducts(): List<ProductItem> {
+        log("getAllProducts () - ${storeApi.getAllProducts()}")
         return storeApi.getAllProducts().map(mapper::map)
     }
 

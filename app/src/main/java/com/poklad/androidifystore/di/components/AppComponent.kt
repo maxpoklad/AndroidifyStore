@@ -7,6 +7,7 @@ import com.poklad.androidifystore.di.modules.RepositoryModule
 import com.poklad.androidifystore.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidifystore.di.viewModel.ViewModelModule
 import com.poklad.androidifystore.presentation.MainActivity
+import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductTest
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -29,4 +30,5 @@ interface AppComponent {
 
     fun inject(fragment: AllProductsFragment)
     fun inject(activity: MainActivity)
+    fun inject(activity: AllProductTest)
 }
