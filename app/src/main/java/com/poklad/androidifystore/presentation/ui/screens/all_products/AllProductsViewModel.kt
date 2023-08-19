@@ -22,9 +22,6 @@ class AllProductsViewModel @Inject constructor(
     coroutineDispatchersProvider: CoroutineDispatchersProvider,
     private val getAllProductsUseCase: GetAllProductsUseCase,
 ) : BaseViewModel(coroutineDispatchersProvider) {
-
-    /*private val _products = MutableSharedFlow<Resource<List<ProductItem>>>()
-    val products = _products.asSharedFlow()*/
     private val _products = MutableStateFlow<Resource<List<ProductItem>>>(Resource.Loading())
     val products = _products.asStateFlow()
     override val coroutineExceptionHandler: CoroutineExceptionHandler
@@ -32,26 +29,9 @@ class AllProductsViewModel @Inject constructor(
             _products.value = Resource.Error(throwable)
         }
 
-
-        init {
-            loadProducts()
-        }
-
-
-    /*private fun loadProducts() {
-        launchCoroutineIO {
-            _products.emit(Resource.Loading())
-            try {
-                val productsList = getAllProductsUseCase.execute(Unit)
-                log("loadProducts before emitAll $productsList")
-                _products.emitAll(productsList)
-                log("loadProducts after emitAll $productsList")
-
-            } catch (e: Exception) {
-                _products.emit(Resource.Error(e.cause ?: Throwable(e.message)))
-            }
-        }
-    }*/
+    init {
+        loadProducts()
+    }
 
     private fun loadProducts() {
         viewModelScope.launch {
@@ -62,7 +42,7 @@ class AllProductsViewModel @Inject constructor(
                 .collect { productList ->
                     log("collect1 - $productList")
                     _products.value = Resource.Success(productList)
-                    log("collect2 - $productList + "+ " ${Resource.Success(productList)}")
+                    log("collect2 - $productList + " + " ${Resource.Success(productList)}")
                 }
         }
     }

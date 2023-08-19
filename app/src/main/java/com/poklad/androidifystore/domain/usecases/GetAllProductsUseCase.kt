@@ -17,7 +17,7 @@ typealias GetAllProductsBaseUseCaseSuspend = UseCaseSuspend<Unit, List<ProductIt
 class GetAllProductsUseCase @Inject constructor(
     private val repository: ProductsRepository,
 ) : GetAllProductsBaseUseCaseSuspend {
-    /*   override suspend fun execute(params: Unit): Flow<Resource<List<ProductItem>>> = flow {
+      /* override suspend fun execute(params: Unit): Flow<Resource<List<ProductItem>>> = flow {
            emit(Resource.Loading())
            try {
                emit(Resource.Success(repository.getAllProducts()))

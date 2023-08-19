@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidifystore.StoreApp
 import com.poklad.androidifystore.databinding.FragmentAllProductsBinding
@@ -46,44 +48,41 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
 
     private fun setUpObserver() {
         lifecycleScope.launch {
-            /* repeatOnLifecycle(Lifecycle.State.STARTED) {*/
-            viewModel.products.collect { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        binding?.apply {
-                            progressBarAllProducts.visibility = View.GONE
-                            renderList(resource.data)
-                            log("FR Resource.Success - ${resource.data}")
-                            recycleViewProductList.visibility = View.VISIBLE
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.products.collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> {
+                            binding?.apply {
+                                progressBarAllProducts.visibility = View.GONE
+                                renderList(resource.data)
+                                recycleViewProductList.visibility = View.VISIBLE
+                            }
                         }
-                    }
 
-                    is Resource.Loading -> {
-                        binding?.apply {
-                            progressBarAllProducts.visibility = View.VISIBLE
-                            recycleViewProductList.visibility = View.GONE
+                        is Resource.Loading -> {
+                            binding?.apply {
+                                progressBarAllProducts.visibility = View.VISIBLE
+                                recycleViewProductList.visibility = View.GONE
+                            }
                         }
-                    }
 
-                    is Resource.Error -> {
-                        binding?.progressBarAllProducts?.visibility = View.GONE
-                        Toast.makeText(
-                            requireContext(),
-                            resource.throwable.toString(),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+                        is Resource.Error -> {
+                            binding?.progressBarAllProducts?.visibility = View.GONE
+                            Toast.makeText(
+                                requireContext(),
+                                resource.throwable.toString(),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
 
+                    }
                 }
-//                }
             }
         }
     }
 
     private fun renderList(productsList: List<ProductItem>) {
-        log("renderList1 FR - $productsList")
         allProductsAdapter.list = productsList
-        log("renderList2  FR- $productsList")
     }
 
     private fun initRecyclerView() {

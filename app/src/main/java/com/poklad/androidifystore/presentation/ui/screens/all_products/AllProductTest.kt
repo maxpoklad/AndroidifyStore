@@ -46,7 +46,7 @@ class AllProductTest : AppCompatActivity() {
                 viewModel.products.collect { resource ->
                     when (resource) {
                         is Resource.Success -> {
-                            binding?.apply {
+                            binding.apply {
                                 progressBarAllProducts.visibility = View.GONE
                                 renderList(resource.data)
                                 log("FR Resource.Success - ${resource.data}")
@@ -55,14 +55,14 @@ class AllProductTest : AppCompatActivity() {
                         }
 
                         is Resource.Loading -> {
-                            binding?.apply {
+                            binding.apply {
                                 progressBarAllProducts.visibility = View.VISIBLE
                                 recycleViewProductList.visibility = View.GONE
                             }
                         }
 
                         is Resource.Error -> {
-                            binding?.progressBarAllProducts?.visibility = View.GONE
+                            binding.progressBarAllProducts.visibility = View.GONE
                             Toast.makeText(
                                 this@AllProductTest,
                                 resource.throwable.toString(),
@@ -83,7 +83,7 @@ class AllProductTest : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        binding?.recycleViewProductList?.apply {
+        binding.recycleViewProductList.apply {
             layoutManager = LinearLayoutManager(this@AllProductTest)
             adapter = allProductsAdapter
         }
