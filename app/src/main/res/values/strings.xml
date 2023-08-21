@@ -2,6 +2,15 @@
     <string name="app_name">AndroidifyStore</string>
     <string name="mens_cotton_jacket">Mens Cotton Jacket</string>
     <string name="price_value">100.44$</string>
-    <string name="add_products_to_favorite">add products to favorite</string>
+    <string name="add_products_to_favorite">add product to favorite</string>
     <string name="product_s_image">product\'s image</string>
+    <string name="products_description">great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions,
+        such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or
+        your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="cart">Cart</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
 </resources>

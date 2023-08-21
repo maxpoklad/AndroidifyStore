@@ -46,12 +46,12 @@
             android:fontFamily="@font/didactgothicregular"
             android:text="@string/mens_cotton_jacket"
             android:textSize="@dimen/text_size_in_item"
-            app:layout_constraintBottom_toTopOf="@id/priceButton"
+            app:layout_constraintBottom_toTopOf="@id/addToCartButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/priceButton"
+            android:id="@+id/addToCartButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"

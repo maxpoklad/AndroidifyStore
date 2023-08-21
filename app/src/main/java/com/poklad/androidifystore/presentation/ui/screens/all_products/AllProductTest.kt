@@ -24,7 +24,7 @@ class AllProductTest : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel: AllProductsViewModel by viewModels() {
+    val viewModel: AllProductsViewModel by viewModels {
         viewModelFactory
     }
     private val allProductsAdapter: AllProductsAdapter by lazy {
