@@ -9,6 +9,7 @@ import com.poklad.androidifystore.di.viewModel.ViewModelModule
 import com.poklad.androidifystore.presentation.MainActivity
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductTest
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment
+import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -31,4 +32,5 @@ interface AppComponent {
     fun inject(fragment: AllProductsFragment)
     fun inject(activity: MainActivity)
     fun inject(activity: AllProductTest)
+    fun inject(fragment: ProductDetailsFragment)
 }

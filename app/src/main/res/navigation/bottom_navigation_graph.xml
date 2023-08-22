@@ -32,14 +32,17 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/allProductsFragment"
+        tools:layout="@layout/fragment_all_products"
         android:name="com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment"
-        android:label="AllProductsFragment" >
+        android:label="AllProductsFragment">
         <action
             android:id="@+id/action_allProductsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
+        tools:layout="@layout/fragment_product_details"
         android:name="com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment"
         android:label="ProductDetailsFragment" />
 </navigation>

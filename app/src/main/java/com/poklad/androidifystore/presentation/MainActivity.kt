@@ -20,6 +20,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         navController = findNavController(R.id.fragmentContainer)
+        setUpBottomNavigationMenu(navController)
+    }
+
+    private fun setUpBottomNavigationMenu(navController: NavController) {
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragmentContainer)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

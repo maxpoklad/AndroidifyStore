@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
@@ -21,6 +22,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
+    }
+
+    protected fun navigateTo(directionAction: Int) {
+        findNavController().navigate(directionAction)
     }
 
 }

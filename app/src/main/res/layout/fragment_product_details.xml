@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
     <Button
-        android:id="@+id/priceButton"
+        android:id="@+id/addToCartButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
