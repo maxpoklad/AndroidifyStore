@@ -2,7 +2,7 @@ package com.poklad.androidifystore.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductItemModel(
+data class ProductItemResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")
