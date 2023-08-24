@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 typealias GetAllProductsBaseUseCaseSuspend = UseCaseSuspend<Unit, List<ProductItem>>
 
-@Singleton
+// TODO why is it singleton?
 class GetAllProductsUseCase @Inject constructor(
     private val repository: ProductsRepository,
 ) : GetAllProductsBaseUseCaseSuspend {

@@ -27,10 +27,46 @@ import com.poklad.androidifystore.utils.visible
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Inject
+class AllProductsFragmentRenderer  {
+
+    fun render(fragment: AllProductsFragment, resource: Resource<List<ProductItem>>) {
+        when (resource) {
+            is Resource.Success -> {
+                binding.apply {
+                    progressBarAllProducts.invisible()
+                    renderList(resource.data)
+                    recycleViewProductList.visible()
+                }
+            }
+
+            is Resource.Loading -> {
+                binding.apply {
+                    progressBarAllProducts.visible()
+                    recycleViewProductList.invisible()
+                }
+            }
+
+            is Resource.Error -> {
+                binding.progressBarAllProducts.visible()
+                Toast.makeText(
+                    requireContext(),
+                    resource.throwable.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+        }
+    }
+}
+
 class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    renderer: AllProductsFragmentRenderer
 
     override val viewModel: AllProductsViewModel by viewModels {
         viewModelFactory
@@ -57,32 +93,7 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.products.collect { resource ->
-                    when (resource) {
-                        is Resource.Success -> {
-                            binding.apply {
-                                progressBarAllProducts.invisible()
-                                renderList(resource.data)
-                                recycleViewProductList.visible()
-                            }
-                        }
-
-                        is Resource.Loading -> {
-                            binding.apply {
-                                progressBarAllProducts.visible()
-                                recycleViewProductList.invisible()
-                            }
-                        }
-
-                        is Resource.Error -> {
-                            binding.progressBarAllProducts.visible()
-                            Toast.makeText(
-                                requireContext(),
-                                resource.throwable.toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-
-                    }
+                    renderer.render(this@AllProductsFragment, resource)
                 }
             }
         }
