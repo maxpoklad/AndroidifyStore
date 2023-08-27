@@ -3,6 +3,7 @@ package com.poklad.androidifystore.presentation
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.LayoutInflater
+import android.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,7 +14,6 @@ import com.poklad.androidifystore.presentation.ui.base.BaseActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-
     override fun inflateViewBinding(inflater: LayoutInflater): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
@@ -22,7 +22,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
-        setUpBottomNavigationMenu(navHostFragment.navController)
+        val navController = navHostFragment.navController
+        setUpBottomNavigationMenu(navController)
     }
 
     private fun setUpBottomNavigationMenu(navController: NavController) {

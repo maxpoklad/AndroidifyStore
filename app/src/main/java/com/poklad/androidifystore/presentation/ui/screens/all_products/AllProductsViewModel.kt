@@ -6,15 +6,10 @@ import com.poklad.androidifystore.domain.usecases.GetAllProductsUseCase
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.utils.CoroutineDispatchersProvider
 import com.poklad.androidifystore.utils.Resource
-import com.poklad.androidifystore.utils.log
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,9 +35,7 @@ class AllProductsViewModel @Inject constructor(
                     _products.value = Resource.Error(cause)
                 }
                 .collect { productList ->
-                    log("collect1 - $productList")
                     _products.value = Resource.Success(productList)
-                    log("collect2 - $productList + " + " ${Resource.Success(productList)}")
                 }
         }
     }

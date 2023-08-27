@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/productImageView"
-            android:layout_width="179dp"
-            android:layout_height="211dp"
+            android:layout_width="180dp"
+            android:layout_height="210dp"
             android:contentDescription="@string/product_s_image"
             android:scaleType="centerCrop"
             android:src="@drawable/image_test_jacket"
@@ -50,11 +50,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="titleTextView" />
+
         <Button
             android:id="@+id/addToCartButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             android:backgroundTint="@color/black"
             android:drawableEnd="@drawable/ic_shopping_cart"
             android:fontFamily="@font/didactgothicregular"
@@ -64,7 +70,8 @@
             app:cornerRadius="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

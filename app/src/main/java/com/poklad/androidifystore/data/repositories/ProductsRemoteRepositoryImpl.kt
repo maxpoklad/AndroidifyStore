@@ -14,7 +14,6 @@ class ProductsRemoteRepositoryImpl @Inject constructor(
     private val mapper: ProductResponseToProductItemMapper
 ) : ProductsRepository {
     override suspend fun getAllProducts(): List<ProductItem> {
-        log("getAllProducts () - ${storeApi.getAllProducts()}")
         return storeApi.getAllProducts().map(mapper::map)
     }
 

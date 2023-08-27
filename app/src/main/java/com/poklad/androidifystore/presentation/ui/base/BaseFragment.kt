@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
+import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 
@@ -24,8 +27,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         return binding.root
     }
 
-    protected fun navigateTo(directionAction: Int) {
-        findNavController().navigate(directionAction)
+    @MainThread
+    protected fun navigateToFragment(@IdRes res: Int, args: Bundle?) {
+        findNavController().navigate(
+            resId = res,
+            args = args,
+            navOptions = null
+        )
     }
-
 }

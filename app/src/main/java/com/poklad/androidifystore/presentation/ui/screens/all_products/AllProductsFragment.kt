@@ -11,7 +11,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidifystore.R
 import com.poklad.androidifystore.StoreApp
@@ -27,46 +26,10 @@ import com.poklad.androidifystore.utils.visible
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@Inject
-class AllProductsFragmentRenderer  {
-
-    fun render(fragment: AllProductsFragment, resource: Resource<List<ProductItem>>) {
-        when (resource) {
-            is Resource.Success -> {
-                binding.apply {
-                    progressBarAllProducts.invisible()
-                    renderList(resource.data)
-                    recycleViewProductList.visible()
-                }
-            }
-
-            is Resource.Loading -> {
-                binding.apply {
-                    progressBarAllProducts.visible()
-                    recycleViewProductList.invisible()
-                }
-            }
-
-            is Resource.Error -> {
-                binding.progressBarAllProducts.visible()
-                Toast.makeText(
-                    requireContext(),
-                    resource.throwable.toString(),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-
-        }
-    }
-}
-
 class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    @Inject
-    renderer: AllProductsFragmentRenderer
 
     override val viewModel: AllProductsViewModel by viewModels {
         viewModelFactory
@@ -93,7 +56,31 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.products.collect { resource ->
-                    renderer.render(this@AllProductsFragment, resource)
+                    when (resource) {
+                        is Resource.Loading -> {
+                            binding.apply {
+                                recycleViewProductList.invisible()
+                                progressBarAllProducts.visible()
+                            }
+                        }
+
+                        is Resource.Success -> {
+                            binding.apply {
+                                progressBarAllProducts.invisible()
+                                renderList(resource.data)
+                                recycleViewProductList.visible()
+                            }
+                        }
+
+                        is Resource.Error -> {
+                            binding.progressBarAllProducts.visible()
+                            Toast.makeText(
+                                binding.root.context,
+                                resource.throwable.toString(),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }
@@ -110,7 +97,7 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
         }
         allProductsAdapter.setOnclickListener { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)
-            findNavController().navigate(
+            navigateToFragment(
                 R.id.action_allProductsFragment_to_productDetailsFragment,
                 bundleOf(ProductDetailsFragment.ARG_PRODUCT to product)
             )

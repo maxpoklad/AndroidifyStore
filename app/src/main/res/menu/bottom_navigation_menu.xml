@@ -16,7 +16,7 @@
         android:title="@string/cart" />
     <item
         android:id="@+id/favoritesFragment"
-        android:icon="@drawable/ic_favorite_white"
+        android:icon="@drawable/ic_favorite_white_48"
         android:title="@string/favorites" />
     <item
         android:id="@+id/profileFragment"
