@@ -17,6 +17,7 @@ class AllProductsViewModel @Inject constructor(
     coroutineDispatchersProvider: CoroutineDispatchersProvider,
     private val getAllProductsUseCase: GetAllProductsUseCase,
 ) : BaseViewModel(coroutineDispatchersProvider) {
+
     private val _products = MutableStateFlow<Resource<List<ProductItem>>>(Resource.Loading())
     val products = _products.asStateFlow()
     override val coroutineExceptionHandler: CoroutineExceptionHandler

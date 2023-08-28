@@ -13,4 +13,6 @@
     <string name="cart">Cart</string>
     <string name="favorites">Favorites</string>
     <string name="profile">Profile</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="visit_our_categories">Visit our Categories</string>
 </resources>

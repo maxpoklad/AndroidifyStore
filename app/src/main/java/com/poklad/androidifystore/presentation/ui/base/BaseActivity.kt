@@ -15,5 +15,4 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
     }
-
 }
