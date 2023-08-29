@@ -91,11 +91,11 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
     }
 
     private fun initRecyclerView() {
-        binding.recycleViewProductList.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = allProductsAdapter
-        }
-        allProductsAdapter.setOnclickListener { productItem ->
+        setUpRecyclerView(
+            allProductsAdapter,
+            binding.recycleViewProductList,
+            LinearLayoutManager.VERTICAL,
+        ) { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)
             navigateToFragment(
                 R.id.action_allProductsFragment_to_productDetailsFragment,
