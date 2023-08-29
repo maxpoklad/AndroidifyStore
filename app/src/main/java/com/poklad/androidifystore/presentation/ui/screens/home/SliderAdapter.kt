@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.poklad.androidifystore.R
 import com.smarteist.autoimageslider.SliderViewAdapter
 
@@ -17,7 +16,7 @@ class SliderAdapter(private val sliderList: List<Int>) :
 
     override fun onCreateViewHolder(parent: ViewGroup?): SliderAdapter.SliderViewHolder {
         val itemView: View =
-            LayoutInflater.from(parent!!.context).inflate(R.layout.test_item, null)
+            LayoutInflater.from(parent!!.context).inflate(R.layout.item_slider, null)
         return SliderViewHolder(itemView)
     }
 

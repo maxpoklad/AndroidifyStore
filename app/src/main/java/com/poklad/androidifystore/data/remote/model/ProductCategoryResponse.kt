@@ -1,9 +1,9 @@
 package com.poklad.androidifystore.data.remote.model
 
-data class ProductCategoryModel(
-    val category: ProductCategory
+data class ProductCategoryResponse(
+    val categoryName: ProductCategoryName
 )
-enum class ProductCategory {
+enum class ProductCategoryName {
     ELECTRONICS,
     JEWELRY,
     MENS_CLOTHING,

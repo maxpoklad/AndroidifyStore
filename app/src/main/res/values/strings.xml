@@ -15,4 +15,7 @@
     <string name="profile">Profile</string>
     <string name="what_are_you_looking_for">What are you looking for?</string>
     <string name="visit_our_categories">Visit our Categories</string>
+    <string name="categories_name">all products</string>
+    <string name="mens_clothes">Mens clothes</string>
+    <string name="women_s_clothes">Women\'s clothes</string>
 </resources>

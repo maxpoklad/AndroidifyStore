@@ -1,6 +1,5 @@
 package com.poklad.androidifystore.presentation.ui.screens.all_products
 
-import androidx.lifecycle.viewModelScope
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.usecases.GetAllProductsUseCase
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
@@ -10,7 +9,6 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AllProductsViewModel @Inject constructor(
@@ -30,7 +28,7 @@ class AllProductsViewModel @Inject constructor(
     }
 
     private fun loadProducts() {
-        viewModelScope.launch {
+        launchCoroutineIO {
             getAllProductsUseCase.execute(Unit)
                 .catch { cause: Throwable ->
                     _products.value = Resource.Error(cause)

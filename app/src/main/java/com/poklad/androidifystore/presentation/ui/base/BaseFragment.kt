@@ -9,6 +9,8 @@ import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
@@ -34,5 +36,20 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
             args = args,
             navOptions = null
         )
+    }
+
+    protected fun <T> setUpRecyclerView(
+        adapter: BaseAdapter<T>,
+        recyclerView: RecyclerView,
+        @RecyclerView.Orientation orientation: Int,
+        onItemClick: (T) -> Unit
+    ) {
+        recyclerView.run {
+            layoutManager = LinearLayoutManager(requireContext(), orientation, false)
+            this.adapter = adapter
+        }
+        adapter.setOnclickListener { item ->
+            onItemClick(item)
+        }
     }
 }

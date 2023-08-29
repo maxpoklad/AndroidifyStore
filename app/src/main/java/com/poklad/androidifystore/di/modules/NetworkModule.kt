@@ -1,7 +1,7 @@
 package com.poklad.androidifystore.di.modules
 
 import com.poklad.androidifystore.data.remote.StoreApi
-import com.poklad.androidifystore.utils.Constants.BASE_URL
+import com.poklad.androidifystore.utils.ApiConstants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

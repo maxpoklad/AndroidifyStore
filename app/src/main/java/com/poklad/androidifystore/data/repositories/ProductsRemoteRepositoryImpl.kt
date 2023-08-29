@@ -4,7 +4,6 @@ import com.poklad.androidifystore.data.mapper.ProductResponseToProductItemMapper
 import com.poklad.androidifystore.data.remote.StoreApi
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.repositories.ProductsRepository
-import com.poklad.androidifystore.utils.log
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,7 +20,7 @@ class ProductsRemoteRepositoryImpl @Inject constructor(
         return mapper.map(storeApi.getProductById(productId))
     }
 
-    override suspend fun getProductsByCategories(categoryName: String): List<ProductItem> {
-        return storeApi.getProductsByCategories(categoryName).map(mapper::map)
+    override suspend fun getProductsBySpecificCategory(categoryName: String): List<ProductItem> {
+        return storeApi.getProductsBySpecificCategory(categoryName).map(mapper::map)
     }
 }

@@ -1,8 +1,12 @@
 package com.poklad.androidifystore.data.remote
 
-import com.poklad.androidifystore.data.remote.model.ProductCategoryModel
+import com.poklad.androidifystore.data.remote.model.ProductCategoryResponse
 import com.poklad.androidifystore.data.remote.model.ProductItemResponse
-import com.poklad.androidifystore.utils.Constants.ALL_PRODUCTS
+import com.poklad.androidifystore.utils.ApiConstants.ALL_PRODUCTS
+import com.poklad.androidifystore.utils.ApiConstants.CATEGORIES
+import com.poklad.androidifystore.utils.ApiConstants.CATEGORY
+import com.poklad.androidifystore.utils.ApiConstants.CATEGORY_NAME
+import com.poklad.androidifystore.utils.ApiConstants.PRODUCT_ID
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,18 +14,18 @@ interface StoreApi {
     @GET(ALL_PRODUCTS)
     suspend fun getAllProducts(): List<ProductItemResponse>
 
-    @GET("products/{productId}")
+    @GET("$ALL_PRODUCTS/{$PRODUCT_ID}")
     suspend fun getProductById(
-        @Path("productId")
+        @Path(PRODUCT_ID)
         productId: Long
     ): ProductItemResponse
 
-    @GET("products/category/{categoryName}")
-    suspend fun getProductsByCategories(
-        @Path("categoryName")
+    @GET("$ALL_PRODUCTS/$CATEGORY/{$CATEGORY_NAME}")
+    suspend fun getProductsBySpecificCategory(
+        @Path(CATEGORY_NAME)
         categoryName: String
     ): List<ProductItemResponse>
 
-    @GET("products/categories")
-    suspend fun getAllCategories(): List<ProductCategoryModel>
+    @GET("$ALL_PRODUCTS/$CATEGORIES")
+    suspend fun getAllCategories(): List<ProductCategoryResponse>
 }
