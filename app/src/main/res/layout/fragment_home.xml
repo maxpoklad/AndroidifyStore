@@ -4,25 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/projectMargin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_search_24"
-            android:fontFamily="@font/didactgothicregular"
-            android:hint="@string/what_are_you_looking_for"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>-->
-
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/imageSlider"
         android:layout_width="0dp"
@@ -68,10 +49,11 @@
 
             <TextView
                 android:id="@+id/textViewMens"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/itemMargin"
                 android:text="@string/mens_clothes"
+                app:drawableEndCompat="@drawable/ic_arrow_left_24"
                 app:layout_constraintBottom_toTopOf="@id/recyclerViewMenClothes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,10 +78,11 @@
 
             <TextView
                 android:id="@+id/textViewWomens"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/itemMargin"
                 android:text="@string/women_s_clothes"
+                app:drawableEndCompat="@drawable/ic_arrow_left_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewMenClothes" />

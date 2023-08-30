@@ -22,6 +22,7 @@ import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
 import com.poklad.androidifystore.utils.Resource
 import com.poklad.androidifystore.utils.invisible
+import com.poklad.androidifystore.utils.toast
 import com.poklad.androidifystore.utils.visible
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -60,12 +61,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         initRecyclerWomen()
         setUpMensList()
         setUpWomenList()
+        openMensProductList()
+        openWomensProductList()
     }
 
     //todo BUG:When I go to the CATEGORY screen, I can't get back to the HOME screen
     private fun navigateToCategories() {
         binding.buttonToCategories.setOnClickListener {
             navigateToFragment(R.id.action_fragmentHome_to_categoriesFragment, null)
+        }
+    }
+
+    private fun openMensProductList() {
+        binding.textViewMens.setOnClickListener {
+            requireContext().toast("Open Men list")
+        }
+    }
+
+    private fun openWomensProductList() {
+        binding.textViewWomens.setOnClickListener {
+            requireContext().toast("Open Women list")
         }
     }
 
@@ -154,7 +169,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     private fun initRecyclerMen() {
         setUpRecyclerView(
             menAdapter,
-            binding.recyclerViewWomenClothes,
+            binding.recyclerViewMenClothes,
             LinearLayoutManager.HORIZONTAL
         ) { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)

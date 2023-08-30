@@ -5,29 +5,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.poklad.androidifystore.data.remote.model.ProductCategoryResponse
 import com.poklad.androidifystore.databinding.ItemCategoryBinding
 import com.poklad.androidifystore.presentation.ui.base.BaseAdapter
 
-//todo do mapping or not?
-class CategoriesAdapter : BaseAdapter<ProductCategoryResponse>() {
-    private val differCallback = object : DiffUtil.ItemCallback<ProductCategoryResponse>() {
+class CategoriesAdapter : BaseAdapter<String>() {
+    private val differCallback = object : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(
-            oldItem: ProductCategoryResponse,
-            newItem: ProductCategoryResponse
+            oldItem: String,
+            newItem: String
         ): Boolean {
-            return oldItem.categoryName == newItem.categoryName
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: ProductCategoryResponse,
-            newItem: ProductCategoryResponse
+            oldItem: String,
+            newItem: String
         ): Boolean {
             return oldItem == newItem
         }
     }
-    override val differList: AsyncListDiffer<ProductCategoryResponse>
-        get() = AsyncListDiffer(this, differCallback)
+    override val differList: AsyncListDiffer<String> = AsyncListDiffer(this, differCallback)
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
@@ -36,17 +33,14 @@ class CategoriesAdapter : BaseAdapter<ProductCategoryResponse>() {
     }
 
     inner class CategoriesHolder(private val binding: ItemCategoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(categoryName: String) {
+        RecyclerView.ViewHolder(binding.root), Binder<String> {
+        override fun bind(item: String) {
             binding.apply {
-                categoryNameTextView.text = categoryName
-               /* root.setOnClickListener {
-                    onItemClickListener?.let {
-                        it(categoryName)
-                    }
-                }*/
+                categoryNameTextView.text = item
+                root.setOnClickListener {
+                    onItemClickListener?.let { it(item) }
+                }
             }
         }
     }
-
 }

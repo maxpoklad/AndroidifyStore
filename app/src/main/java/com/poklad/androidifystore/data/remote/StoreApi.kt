@@ -1,6 +1,5 @@
 package com.poklad.androidifystore.data.remote
 
-import com.poklad.androidifystore.data.remote.model.ProductCategoryResponse
 import com.poklad.androidifystore.data.remote.model.ProductItemResponse
 import com.poklad.androidifystore.utils.ApiConstants.ALL_PRODUCTS
 import com.poklad.androidifystore.utils.ApiConstants.CATEGORIES
@@ -27,5 +26,5 @@ interface StoreApi {
     ): List<ProductItemResponse>
 
     @GET("$ALL_PRODUCTS/$CATEGORIES")
-    suspend fun getAllCategories(): List<ProductCategoryResponse>
+    suspend fun getAllCategories(): List<String>//todo I'm using strings now, I can't work with ENUM, but i want create more cool app
 }

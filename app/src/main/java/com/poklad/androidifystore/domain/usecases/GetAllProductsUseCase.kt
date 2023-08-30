@@ -5,10 +5,8 @@ import com.poklad.androidifystore.domain.repositories.ProductsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
 typealias GetAllProductsBaseUseCaseSuspend = UseCaseSuspend<Unit, List<ProductItem>>
-
 class GetAllProductsUseCase @Inject constructor(
     private val repository: ProductsRepository,
 ) : GetAllProductsBaseUseCaseSuspend {

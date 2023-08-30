@@ -1,7 +1,9 @@
 package com.poklad.androidifystore.utils
 
+import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 
 fun Any.tag(): String {
     return this::class.simpleName!!
@@ -9,6 +11,10 @@ fun Any.tag(): String {
 
 fun Any.log(msg: String) {
     Log.d("TAG: ${tag()}", msg)
+}
+//todo this is good or Not?
+fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
 fun View.visible() {
