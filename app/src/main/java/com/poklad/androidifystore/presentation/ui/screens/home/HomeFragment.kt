@@ -20,15 +20,14 @@ import com.poklad.androidifystore.presentation.mapper.ProductItemToProductItemUi
 import com.poklad.androidifystore.presentation.ui.base.BaseFragment
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
-import com.poklad.androidifystore.utils.Resource
 import com.poklad.androidifystore.utils.invisible
 import com.poklad.androidifystore.utils.toast
 import com.poklad.androidifystore.utils.visible
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     @Inject
@@ -60,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         initRecyclerMen()
         initRecyclerWomen()
         setUpMensList()
-        setUpWomenList()
+        //setUpWomenList()
         openMensProductList()
         openWomensProductList()
     }
@@ -87,70 +86,116 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     private fun setUpMensList() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.menClothesList.collect { resource ->
-                    when (resource) {
-                        is Resource.Loading -> {
-                            binding.apply {
-                                progressBarMenList.visible()
-                                recyclerViewMenClothes.invisible()
-                            }
+                viewModel.loadingFlow.collect { showLoader ->
+                    if (showLoader) {
+                        binding.apply {
+                            progressBarMenList.visible()
+                            recyclerViewMenClothes.invisible()
+                            recyclerViewWomenClothes.invisible()
                         }
-
-                        is Resource.Success -> {
-                            binding.apply {
-                                progressBarMenList.invisible()
-                                renderMenList(resource.data)
-                                recyclerViewMenClothes.visible()
-                            }
-                        }
-
-                        is Resource.Error -> {
-                            binding.progressBarMenList.visible()
-                            Toast.makeText(
-                                binding.root.context,
-                                resource.throwable.toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
+                    } else {
+                        binding.apply {
+                            progressBarMenList.invisible()
+                            recyclerViewMenClothes.visible()
+                            recyclerViewWomenClothes.visible()
                         }
                     }
                 }
             }
         }
-    }
 
-    private fun setUpWomenList() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.errorWomanList.collect { message ->
+
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.womenClothesList.collect { resource ->
-                    when (resource) {
-                        is Resource.Loading -> {
-                            binding.apply {
-                                progressBarWomenList.visible()
-                                recyclerViewWomenClothes.invisible()
-                            }
-                        }
-
-                        is Resource.Success -> {
-                            binding.apply {
-                                progressBarWomenList.invisible()
-                                renderWomenList(resource.data)
-                                recyclerViewWomenClothes.visible()
-                            }
-                        }
-
-                        is Resource.Error -> {
-                            binding.progressBarWomenList.visible()
-                            Toast.makeText(
-                                binding.root.context,
-                                resource.throwable.toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
+                viewModel.womenClothesList.collect {
+                    binding.apply {
+                        renderWomenList(it)
                     }
                 }
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.menClothesList.collect {
+                    if (it.isEmpty()) {
+                        //hide this section
+                    }
+                    binding.apply {
+                        renderMenList(it)
+                    }
+                }
+            }
+        }
+//                viewModel.menClothesList.collect { resource ->
+//                    when (resource) {
+//                        is Resource.Loading -> {
+//                            binding.apply {
+//                                progressBarMenList.visible()
+//                                recyclerViewMenClothes.invisible()
+//                            }
+//                        }
+//
+//                        is Resource.Success -> {
+//                            binding.apply {
+//                                progressBarMenList.invisible()
+//                                renderMenList(resource.data)
+//                                recyclerViewMenClothes.visible()
+//                            }
+//                        }
+//
+//                        is Resource.Error -> {
+//                            binding.progressBarMenList.visible()
+//                            Toast.makeText(
+//                                binding.root.context,
+//                                resource.throwable.toString(),
+//                                Toast.LENGTH_LONG
+//                            ).show()
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
+
+//    private fun setUpWomenList() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.womenClothesList.collect { resource ->
+//                    when (resource) {
+//                        is Resource.Loading -> {
+//                            binding.apply {
+//                                progressBarWomenList.visible()
+//                                recyclerViewWomenClothes.invisible()
+//                            }
+//                        }
+//
+//                        is Resource.Success -> {
+//                            binding.apply {
+//                                progressBarWomenList.invisible()
+//                                renderWomenList(resource.data)
+//                                recyclerViewWomenClothes.visible()
+//                            }
+//                        }
+//
+//                        is Resource.Error -> {
+//                            binding.progressBarWomenList.visible()
+//                            Toast.makeText(
+//                                binding.root.context,
+//                                resource.throwable.toString(),
+//                                Toast.LENGTH_LONG
+//                            ).show()
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     private fun initRecyclerWomen() {
         setUpRecyclerView(
