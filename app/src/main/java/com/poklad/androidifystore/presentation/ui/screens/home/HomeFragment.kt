@@ -81,57 +81,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
-    /*    private fun setUp() {
-            viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.menClothesList.collect { resource ->
-                        when (resource) {
-                            is Resource.Loading -> {
-                                binding.apply {
-                                    recyclerViewWomenClothes.invisible()
-                                    progressBarMenList.visible()
-                                }
-                            }
-
-                            is Resource.Success -> {
-                                binding.apply {
-                                    progressBarMenList.invisible()
-                                    renderMenList (resource.data)
-                                    recyclerViewWomenClothes.invisible()
-                                }
-                            }
-
-                            is Resource.Error -> {
-                                // Показать ошибку с помощью Snackbar или Toast
-                                Snackbar.make(
-                                    binding.root,
-                                    resource.throwable?.localizedMessage ?: "Unknown error",
-                                    Snackbar.LENGTH_LONG
-                                ).show()
-                            }
-                        }
-                    }
-
-                }
-            }
-        }*/
     private fun setUPLists() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loadingFlow.collect { showLoader ->
                     if (showLoader) {
                         binding.apply {
-                            //                            progressBarMenList.visible()
-                            //                            progressBarMenList.visible()
+                            progressBarMenList.visible()
+                            progressBarWomenList.visible()
                             recyclerViewMenClothes.invisible()
                             recyclerViewWomenClothes.invisible()
                         }
                     } else {
                         binding.apply {
-                            //                            progressBarMenList.invisible()
-                            //                            progressBarWomenList.invisible()
                             recyclerViewMenClothes.visible()
                             recyclerViewWomenClothes.visible()
+                            progressBarMenList.invisible()
+                            progressBarWomenList.invisible()
                         }
                     }
                 }

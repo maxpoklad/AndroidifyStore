@@ -1,5 +1,4 @@
-package com.poklad.androidifystore.presentation.ui.screens.home
-
+package com.poklad.androidifystore.presentation.ui.screens.product_details
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -10,7 +9,7 @@ import com.poklad.androidifystore.databinding.ItemProductHorizonatalBinding
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.presentation.ui.base.BaseAdapter
 
-class MenListAdapter : BaseAdapter<ProductItem>() {
+class SpecificCategoryListAdapter : BaseAdapter<ProductItem>() {
     private val differCallback = object : DiffUtil.ItemCallback<ProductItem>() {
         override fun areItemsTheSame(oldItem: ProductItem, newItem: ProductItem): Boolean {
             return oldItem.id == newItem.id

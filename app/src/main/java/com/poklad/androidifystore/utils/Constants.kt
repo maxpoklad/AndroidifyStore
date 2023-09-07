@@ -14,6 +14,7 @@ object ApiConstants {
 }
 
 object PresentationConstants {
+    const val ALL_PRODUCTS = "all Products"
     const val MENS_CLOTHING = "men's clothing"
     const val WOMENS_CLOTHING = "women's clothing"
     const val EMPTY_STRING = ""

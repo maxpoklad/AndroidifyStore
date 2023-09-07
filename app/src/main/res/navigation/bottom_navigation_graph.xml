@@ -55,5 +55,9 @@
         android:id="@+id/productDetailsFragment"
         tools:layout="@layout/fragment_product_details"
         android:name="com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" />
+        android:label="ProductDetailsFragment" >
+        <action
+            android:id="@+id/action_productDetailsFragment_self"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
 </navigation>
