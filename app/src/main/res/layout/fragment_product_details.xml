@@ -69,7 +69,7 @@
         android:id="@+id/addToCartButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/projectMargin"
         android:backgroundTint="@color/black"
         android:drawableEnd="@drawable/ic_shopping_cart"
         android:fontFamily="@font/didactgothicregular"

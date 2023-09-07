@@ -6,9 +6,7 @@
 
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/imageSlider"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:layout_margin="@dimen/projectMargin"
+        style="@style/SliderStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,19 +20,21 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonToCategories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/custom"
-        android:fontFamily="@font/didactgothicregular"
-        android:text="@string/visit_our_categories"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        style="@style/VisitBottomStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageSlider" />
 
-    <androidx.core.widget.NestedScrollView
+    <!--<androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/projectMargin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonToCategories">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/projectMargin"
@@ -43,68 +43,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonToCategories">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textViewMens"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:text="@string/mens_clothes"
+            app:drawableEndCompat="@drawable/ic_arrow_left_24"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewMenClothes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textViewMens"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/itemMargin"
-                android:text="@string/mens_clothes"
-                app:drawableEndCompat="@drawable/ic_arrow_left_24"
-                app:layout_constraintBottom_toTopOf="@id/recyclerViewMenClothes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:id="@+id/progressBarMenList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewMens" />
 
-            <ProgressBar
-                android:id="@+id/progressBarMenList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewMens" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMenClothes"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewMens" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewMenClothes"
-                android:layout_width="0dp"
-                android:layout_height="160dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewMens" />
+        <TextView
+            android:id="@+id/textViewWomens"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:text="@string/women_s_clothes"
+            app:drawableEndCompat="@drawable/ic_arrow_left_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewMenClothes" />
 
-            <TextView
-                android:id="@+id/textViewWomens"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/itemMargin"
-                android:text="@string/women_s_clothes"
-                app:drawableEndCompat="@drawable/ic_arrow_left_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewMenClothes" />
+        <ProgressBar
+            android:id="@+id/progressBarWomenList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
 
-            <ProgressBar
-                android:id="@+id/progressBarWomenList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewWomenClothes"
-                android:layout_width="0dp"
-                android:layout_height="160dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewWomenClothes"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

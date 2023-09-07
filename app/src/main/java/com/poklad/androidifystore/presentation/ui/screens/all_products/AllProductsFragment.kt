@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,13 +15,12 @@ import com.poklad.androidifystore.R
 import com.poklad.androidifystore.StoreApp
 import com.poklad.androidifystore.databinding.FragmentAllProductsBinding
 import com.poklad.androidifystore.domain.model.ProductItem
+import com.poklad.androidifystore.extensions.invisible
+import com.poklad.androidifystore.extensions.visible
 import com.poklad.androidifystore.presentation.mapper.ProductItemToProductItemUi
 import com.poklad.androidifystore.presentation.ui.base.BaseFragment
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
-import com.poklad.androidifystore.utils.Resource
-import com.poklad.androidifystore.utils.invisible
-import com.poklad.androidifystore.utils.visible
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -51,37 +49,27 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
         initRecyclerView()
         setUpObserver()
     }
-
     private fun setUpObserver() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.products.collect { resource ->
-                    when (resource) {
-                        is Resource.Loading -> {
-                            binding.apply {
-                                recycleViewProductList.invisible()
-                                progressBarAllProducts.visible()
-                            }
+                viewModel.loadingFlow.collect { showLoader ->
+                    if (showLoader) {
+                        binding.apply {
+                            progressBarAllProducts.visible()
+                            recycleViewProductList.invisible()
                         }
-
-                        is Resource.Success -> {
-                            binding.apply {
-                                progressBarAllProducts.invisible()
-                                renderList(resource.data)
-                                recycleViewProductList.visible()
-                            }
-                        }
-
-                        is Resource.Error -> {
-                            binding.progressBarAllProducts.visible()
-                            Toast.makeText(
-                                binding.root.context,
-                                resource.throwable.toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
+                    } else {
+                        binding.apply {
+                            progressBarAllProducts.invisible()
+                            recycleViewProductList.visible()
                         }
                     }
                 }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.products.collect { productsList ->
+                renderList(productsList)
             }
         }
     }

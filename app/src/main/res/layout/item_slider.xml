@@ -4,9 +4,11 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/idIVSliderItem"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/imageViewSlider"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/product_s_image" />
 
 </RelativeLayout>

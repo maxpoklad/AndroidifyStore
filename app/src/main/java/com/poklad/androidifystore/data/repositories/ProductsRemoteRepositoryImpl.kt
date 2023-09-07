@@ -16,7 +16,7 @@ class ProductsRemoteRepositoryImpl @Inject constructor(
         return storeApi.getAllProducts().map(mapper::map)
     }
 
-    override suspend fun getProductsById(productId: Long): ProductItem {
+    override suspend fun getProductById(productId: Long): ProductItem {
         return mapper.map(storeApi.getProductById(productId))
     }
 

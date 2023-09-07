@@ -1,7 +1,7 @@
 package com.poklad.androidifystore.di.modules
 
 import com.poklad.androidifystore.data.remote.StoreApi
-import com.poklad.androidifystore.utils.ApiConstants.BASE_URL
+import com.poklad.androidifystore.utils.ApiConstants
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -34,7 +34,7 @@ object NetworkModule {
         okHttpClient: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(ApiConstants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

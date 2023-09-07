@@ -1,12 +1,17 @@
 package com.poklad.androidifystore.data.remote.model
 
-data class ProductCategoryResponse(
-    val categoryTypeName: ProductCategoryTypeName
-)
+import com.google.gson.annotations.SerializedName
 
-enum class ProductCategoryTypeName {
-    ELECTRONICS,
-    JEWELRY,
-    MENS_CLOTHING,
-    WOMENS_CLOTHING,
+enum class ProductCategoryTypeNameResponse(val rawValue: String) {
+    @SerializedName("electronics")
+    ELECTRONICS("electronics"),
+
+    @SerializedName("jewelery")
+    JEWELRY("jewelery"),
+
+    @SerializedName("men's clothing")
+    MENS_CLOTHING("men's clothing"),
+
+    @SerializedName("women's clothing")
+    WOMENS_CLOTHING("women's clothing"),
 }

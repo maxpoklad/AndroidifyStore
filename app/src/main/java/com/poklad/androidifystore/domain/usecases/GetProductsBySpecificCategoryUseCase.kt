@@ -4,9 +4,11 @@ import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.domain.repositories.ProductsRepository
 import javax.inject.Inject
 
-class GetProductsBySpecificCategoryUseCase  @Inject constructor(
+typealias ProductsByCategoryUseCase = UseCaseSuspend<String, List<ProductItem>>
+
+class GetProductsBySpecificCategoryUseCase @Inject constructor(
     private val repository: ProductsRepository
-) : UseCaseSuspend2<String, List<ProductItem>> {
+) : ProductsByCategoryUseCase {
 
     override suspend fun execute(categoryName: String): List<ProductItem> {
         return repository.getProductsBySpecificCategory(categoryName)

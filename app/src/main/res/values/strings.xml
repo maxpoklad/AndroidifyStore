@@ -18,4 +18,13 @@
     <string name="categories_name">all products</string>
     <string name="mens_clothes">Mens clothes</string>
     <string name="women_s_clothes">Women\'s clothes</string>
+    <string name="checkout">Checkout</string>
+    <string name="john_doe">John Doe</string>
+    <string name="name">Name</string>
+    <string name="username">User name</string>
+    <string name="johnd">johnd</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="number">1–570–236–7033</string>
+    <string name="address">Address</string>
+    <string name="addres_text">New road 7835, 12926-3874 Kilcoole</string>
 </resources>

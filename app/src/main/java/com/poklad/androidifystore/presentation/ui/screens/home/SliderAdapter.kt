@@ -1,10 +1,8 @@
 package com.poklad.androidifystore.presentation.ui.screens.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.poklad.androidifystore.R
+import com.poklad.androidifystore.databinding.ItemSliderBinding
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 class SliderAdapter(private val sliderList: List<Int>) :
@@ -14,20 +12,19 @@ class SliderAdapter(private val sliderList: List<Int>) :
         return sliderList.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?): SliderAdapter.SliderViewHolder {
-        val itemView: View =
-            LayoutInflater.from(parent!!.context).inflate(R.layout.item_slider, null)
-        return SliderViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup): SliderViewHolder {
+        val binding =
+            ItemSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return SliderViewHolder(binding)
     }
 
-    override fun onBindViewHolder(viewHolder: SliderAdapter.SliderViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: SliderViewHolder, position: Int) {
         viewHolder.bind(sliderList[position])
     }
 
-    class SliderViewHolder(itemView: View) : ViewHolder(itemView) {
-        private val sliderIV: ImageView = itemView.findViewById(R.id.idIVSliderItem)
+    class SliderViewHolder(private val binding: ItemSliderBinding) : ViewHolder(binding.root) {
         fun bind(resId: Int) {
-            sliderIV.setImageResource(resId)
+            binding.imageViewSlider.setImageResource(resId)
         }
     }
 

@@ -1,9 +1,7 @@
 package com.poklad.androidifystore.presentation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.LayoutInflater
-import android.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment

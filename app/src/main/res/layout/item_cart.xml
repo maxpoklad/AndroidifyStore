@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/itemMargin"
+    android:background="@drawable/border"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/itemMargin"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/image_test_jacket" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/TitleInCartAndFavorites"
+            app:layout_constraintBottom_toTopOf="@id/priceTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/productImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/mens_cotton_jacket" />
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:fontFamily="@font/didactgothicregular"
+            android:textSize="@dimen/text_price_in_cart_and_favorites"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/productImageView"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            tools:text="@string/price_value" />
+
+        <ImageView
+            android:id="@+id/minusImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:src="@drawable/ic_minus_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/countProductTextView" />
+
+        <TextView
+            android:id="@+id/countProductTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:textSize="@dimen/text_price_in_cart_and_favorites"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/minusImageView"
+            app:layout_constraintStart_toEndOf="@+id/plusImageView"
+            tools:text="3333" />
+
+        <ImageView
+            android:id="@+id/plusImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:src="@drawable/ic_add_24px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

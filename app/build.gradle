@@ -71,8 +71,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.1'
 
+    //Slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
+    //CircleImage
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
+    implementation("com.google.android.material:material:1.9.0")
     implementation 'androidx.fragment:fragment-ktx:1.6.1'
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'

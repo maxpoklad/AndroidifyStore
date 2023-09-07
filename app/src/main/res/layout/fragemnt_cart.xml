@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CART"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/projectMargin"
+        app:layout_constraintBottom_toTopOf="@id/totalPriceLinear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_cart" />
+
+    <LinearLayout
+        android:id="@+id/totalPriceLinear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/projectMargin"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/checkoutButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cartRecyclerView">
+
+        <TextView
+            android:id="@+id/totalItemsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:fontFamily="@font/didactgothicregular"
+            tools:text="Total 12 items" />
+
+        <TextView
+            android:id="@+id/totalPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:fontFamily="@font/didactgothicregular"
+            android:textStyle="bold"
+            tools:text="$345.5" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/checkoutButton"
+        style="@style/ButtonInCartAndFavorites"
+        android:text="@string/checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalPriceLinear" />
 </androidx.constraintlayout.widget.ConstraintLayout>

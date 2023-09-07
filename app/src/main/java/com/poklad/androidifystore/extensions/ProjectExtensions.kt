@@ -1,4 +1,4 @@
-package com.poklad.androidifystore.utils
+package com.poklad.androidifystore.extensions
 
 import android.content.Context
 import android.util.Log
@@ -12,7 +12,7 @@ fun Any.tag(): String {
 fun Any.log(msg: String) {
     Log.d("TAG: ${tag()}", msg)
 }
-//todo this is good or Not?
+
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
