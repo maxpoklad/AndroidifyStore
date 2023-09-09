@@ -18,6 +18,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+      /*  Thread.sleep(3000)
+        installSplashScreen()*/
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController
