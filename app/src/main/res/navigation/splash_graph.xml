@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.poklad.androidifystore.presentation.ui.screens.splash.SplashFragment"
-        android:label="SplashFragment"
+        android:label="Splash"
         tools:layout="@layout/fragment_splash" />
 </navigation>

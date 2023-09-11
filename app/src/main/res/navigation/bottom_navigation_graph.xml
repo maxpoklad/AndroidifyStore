@@ -29,23 +29,23 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.poklad.androidifystore.presentation.ui.screens.cart.CartFragment"
-        android:label="CartFragment"
+        android:label="Cart"
         tools:layout="@layout/fragemnt_cart" />
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.poklad.androidifystore.presentation.ui.screens.favorites.FavoritesFragment"
-        android:label="FavoritesFragment"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.poklad.androidifystore.presentation.ui.screens.profile.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/allProductsFragment"
         tools:layout="@layout/fragment_all_products"
         android:name="com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment"
-        android:label="AllProductsFragment">
+        android:label="All products">
         <action
             android:id="@+id/action_allProductsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -55,7 +55,7 @@
         android:id="@+id/productDetailsFragment"
         tools:layout="@layout/fragment_product_details"
         android:name="com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" >
+        android:label="Product details" >
         <action
             android:id="@+id/action_productDetailsFragment_self"
             app:destination="@id/productDetailsFragment" />

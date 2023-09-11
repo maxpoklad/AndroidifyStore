@@ -32,6 +32,7 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProductDetailsViewModel::class)
     abstract fun bindProductDetailsViewModel(productDetailsViewModel: ProductDetailsViewModel): ViewModel
+
     @Binds
     @IntoMap
     @ViewModelKey(SplashViewModel::class)

@@ -23,7 +23,7 @@
         android:layout_margin="@dimen/projectMargin"
         android:background="@drawable/border"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/checkoutButton"
+        app:layout_constraintBottom_toTopOf="@id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cartRecyclerView">
@@ -49,8 +49,8 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/checkoutButton"
-        style="@style/ButtonInCartAndFavorites"
+        android:id="@+id/signUpButton"
+        style="@style/ButtonBlack"
         android:text="@string/checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

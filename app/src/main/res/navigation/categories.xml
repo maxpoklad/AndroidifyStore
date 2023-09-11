@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categories"
+    app:startDestination="@id/categoriesFragment2">
+
+    <fragment
+        android:id="@+id/categoriesFragment2"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.categories.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment2_to_allProductsFragment3"
+            app:destination="@id/allProductsFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductsFragment3"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment"
+        android:label="AllProductsFragment"
+        tools:layout="@layout/fragment_all_products">
+        <action
+            android:id="@+id/action_allProductsFragment3_to_cart"
+            app:destination="@id/cart" />
+        <action
+            android:id="@+id/action_allProductsFragment3_to_productDetailsFragment5"
+            app:destination="@id/productDetailsFragment5" />
+    </fragment>
+    <include app:graph="@navigation/cart" />
+    <fragment
+        android:id="@+id/productDetailsFragment5"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment"
+        tools:layout="@layout/fragment_product_details" />
+</navigation>
