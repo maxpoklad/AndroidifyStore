@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">AndroidifyStore</string>
+    <string name="mens_cotton_jacket">Mens Cotton Jacket</string>
+    <string name="price_value">100.44$</string>
+    <string name="add_products_to_favorite">add product to favorite</string>
+    <string name="product_s_image">product\'s image</string>
+    <string name="products_description">great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions,
+        such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or
+        your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="cart">Cart</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="visit_our_categories">Visit our Categories</string>
+    <string name="categories_name">all products</string>
+    <string name="mens_clothes">Mens clothes</string>
+    <string name="women_s_clothes">Women\'s clothes</string>
+    <string name="checkout">Checkout</string>
+    <string name="john_doe">John Doe</string>
+    <string name="name">Name</string>
+    <string name="username">User name</string>
+    <string name="johnd">johnd</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="number">1–570–236–7033</string>
+    <string name="address">Address</string>
+    <string name="addres_text">New road 7835, 12926–3874 Kilcoole</string>
+    <string name="please_wait">Please wait</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login_to_your_account">Login to your Account</string>
+    <string name="sign_up">Sign up to app</string>
+    <string name="confirm_password">Confirm paswword</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="signup">Sign up</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="back">back</string>
 </resources>

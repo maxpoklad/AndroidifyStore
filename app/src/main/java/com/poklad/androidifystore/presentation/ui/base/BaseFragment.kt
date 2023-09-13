@@ -4,32 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
+import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
-    private var _binding: VB? = null
-    protected val binding: VB? = _binding
+
+    protected val binding: VB by lazy { inflateViewBinding(layoutInflater) }
+
     protected abstract val viewModel: VM
+    protected abstract fun inflateViewBinding(inflater: LayoutInflater): VB
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflateBinding(inflater, container)
-        /*
-                viewModel = ViewModelProvider(this)[getViewModelClass()]
-        */
-        return _binding?.root
+        super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
-    protected abstract fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): VB
+    @MainThread
+    protected fun navigateToFragment(@IdRes res: Int, args: Bundle?) {
+        findNavController().navigate(
+            resId = res,
+            args = args,
+            navOptions = null
+        )
+    }
 
-    /*
-        abstract fun getViewModelClass(): Class<VM>
-    */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    protected fun <T> setUpRecyclerView(
+        adapter: BaseAdapter<T>,
+        recyclerView: RecyclerView,
+        @RecyclerView.Orientation orientation: Int,
+        onItemClick: (T) -> Unit
+    ) {
+        recyclerView.run {
+            layoutManager = LinearLayoutManager(requireContext(), orientation, false)
+            this.adapter = adapter
+        }
+        adapter.setOnclickListener { item ->
+            onItemClick(item)
+        }
     }
 }

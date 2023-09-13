@@ -1,7 +1,7 @@
 package com.poklad.androidifystore.utils
 
-sealed class Resource() {
-    class Success<T>(data: T) : Resource()
-    class Error(val throwable: Throwable?) : Resource()
-    object Loading : Resource()
+sealed class Resource<T> {
+    class Success<T>(val data: T) : Resource<T>()
+    class Error<T>(val throwable: Throwable?) : Resource<T>()
+    class Loading<T> : Resource<T>()
 }

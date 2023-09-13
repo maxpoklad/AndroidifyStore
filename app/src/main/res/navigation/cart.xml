@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cart"
+    app:startDestination="@id/cartFragment2">
+
+    <fragment
+        android:id="@+id/cartFragment2"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.cart.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragemnt_cart" >
+        <action
+            android:id="@+id/action_cartFragment2_to_productDetailsFragment2"
+            app:destination="@id/productDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment2"
+        tools:layout="@layout/fragment_product_details"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <action
+            android:id="@+id/action_productDetailsFragment2_to_cartFragment2"
+            app:destination="@id/cartFragment2" />
+    </fragment>
+</navigation>

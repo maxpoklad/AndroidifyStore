@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Слой для границы -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" /> <!-- Цвет фона -->
+            <stroke
+                android:width="2dp"
+                android:color="@color/black" /> <!-- Цвет границы -->
+            <corners android:radius="8dp" /> <!-- Уменьшено значение для менее закругленных углов -->
+        </shape>
+    </item>
+</layer-list>
