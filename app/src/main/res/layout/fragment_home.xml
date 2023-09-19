@@ -1,95 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/imageSlider"
-        style="@style/SliderStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:sliderIndicatorGravity="center_horizontal|bottom"
-        app:sliderIndicatorOrientation="horizontal"
-        app:sliderIndicatorPadding="2.4dp"
-        app:sliderIndicatorRadius="1.2dp"
-        app:sliderIndicatorSelectedColor="@color/white"
-        app:sliderIndicatorUnselectedColor="#5A5A5A"
-        app:sliderScrollTimeInSec="2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonToCategories"
-        style="@style/VisitBottomStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageSlider" />
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/projectMargin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonToCategories">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textViewMens"
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imageSlider"
+            style="@style/SliderStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="2.4dp"
+            app:sliderIndicatorRadius="1.2dp"
+            app:sliderIndicatorSelectedColor="@color/white"
+            app:sliderIndicatorUnselectedColor="#5A5A5A"
+            app:sliderScrollTimeInSec="2" />
+
+        <View
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/itemMargin"
-            android:text="@string/mens_clothes"
-            app:drawableEndCompat="@drawable/ic_arrow_left_24"
-            app:layout_constraintBottom_toTopOf="@id/recyclerViewMenClothes"
+            android:layout_height="0dp"
+            android:background="@drawable/gradient_overlay"
+            app:layout_constraintBottom_toBottomOf="@id/imageSlider"
+            app:layout_constraintEnd_toEndOf="@id/imageSlider"
+            app:layout_constraintStart_toStartOf="@id/imageSlider"
+            app:layout_constraintTop_toTopOf="@id/imageSlider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonToCategories"
+            style="@style/VisitBottomStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/imageSlider" />
 
-        <ProgressBar
-            android:id="@+id/progressBarMenList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewMens" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMenClothes"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:orientation="horizontal"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewMens" />
+            app:layout_constraintTop_toBottomOf="@id/buttonToCategories">
 
-        <TextView
-            android:id="@+id/textViewWomens"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/itemMargin"
-            android:text="@string/women_s_clothes"
-            app:drawableEndCompat="@drawable/ic_arrow_left_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewMenClothes" />
+            <TextView
+                android:id="@+id/textViewMens"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/itemMargin"
+                android:text="@string/mens_clothes"
+                app:drawableEndCompat="@drawable/ic_arrow_left_24"
+                app:layout_constraintBottom_toTopOf="@id/recyclerViewMenClothes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBarWomenList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
+            <ProgressBar
+                android:id="@+id/progressBarMenList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewMens" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewWomenClothes"
-            android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMenClothes"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewMens" />
+
+            <TextView
+                android:id="@+id/textViewWomens"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/itemMargin"
+                android:text="@string/women_s_clothes"
+                app:drawableEndCompat="@drawable/ic_arrow_left_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewMenClothes" />
+
+            <ProgressBar
+                android:id="@+id/progressBarWomenList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewWomenClothes"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewWomens" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

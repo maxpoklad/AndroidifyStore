@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidifystore.R
 import com.poklad.androidifystore.StoreApp
 import com.poklad.androidifystore.databinding.FragmentCategoriesBinding
@@ -77,11 +78,12 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding, BaseViewModel
     }
 
     private fun initRecyclerView() {
-        binding.recycleViewCategories.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = categoriesAdapter
-        }
-        categoriesAdapter.setOnclickListener { category ->
+        setUpRecyclerView(
+            adapter = categoriesAdapter,
+            recyclerView = binding.recycleViewCategories,
+            orientation = LinearLayoutManager.VERTICAL,
+            columns = 2
+        ) { category ->
             if (category == "all products") {
                 findNavController().navigate(R.id.action_categoriesFragment_to_allProductsFragment)
             } else {

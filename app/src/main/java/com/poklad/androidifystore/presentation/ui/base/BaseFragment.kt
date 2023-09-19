@@ -8,6 +8,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
@@ -41,10 +42,15 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         adapter: BaseAdapter<T>,
         recyclerView: RecyclerView,
         @RecyclerView.Orientation orientation: Int,
+        columns: Int = 1,
         onItemClick: (T) -> Unit
     ) {
         recyclerView.run {
-            layoutManager = LinearLayoutManager(requireContext(), orientation, false)
+            layoutManager = if (columns > 1) {
+                GridLayoutManager(requireContext(), columns)
+            } else {
+                LinearLayoutManager(requireContext(), orientation, false)
+            }
             this.adapter = adapter
         }
         adapter.setOnclickListener { item ->
