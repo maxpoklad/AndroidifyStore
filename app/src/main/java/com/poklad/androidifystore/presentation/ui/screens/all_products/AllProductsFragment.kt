@@ -43,12 +43,12 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
         super.onAttach(context)
         StoreApp.daggerComponent.inject(this)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         setUpObserver()
     }
+
     private fun setUpObserver() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -79,16 +79,16 @@ class AllProductsFragment : BaseFragment<FragmentAllProductsBinding, BaseViewMod
     }
 
     private fun initRecyclerView() {
-        setUpRecyclerView(
-            allProductsAdapter,
-            binding.recycleViewProductList,
-            LinearLayoutManager.VERTICAL,
-        ) { productItem ->
-            val product = ProductItemToProductItemUi().map(productItem)
-            navigateToFragment(
-                R.id.action_allProductsFragment_to_productDetailsFragment,
-                bundleOf(ProductDetailsFragment.ARG_PRODUCT to product)
-            )
+        binding.recycleViewProductList.apply {
+            adapter = allProductsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            allProductsAdapter.setOnclickListener { productItem ->
+                val product = ProductItemToProductItemUi().map(productItem)
+                navigateToFragment(
+                    R.id.action_allProductsFragment_to_productDetailsFragment,
+                    bundleOf(ProductDetailsFragment.ARG_PRODUCT to product)
+                )
+            }
         }
     }
 }

@@ -78,12 +78,11 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding, BaseViewModel
     }
 
     private fun initRecyclerView() {
-        setUpRecyclerView(
-            adapter = categoriesAdapter,
-            recyclerView = binding.recycleViewCategories,
-            orientation = LinearLayoutManager.VERTICAL,
-            columns = 2
-        ) { category ->
+        binding.recycleViewCategories.apply {
+            adapter = categoriesAdapter
+            layoutManager = GridLayoutManager(requireContext(), 2)
+        }
+        categoriesAdapter.setOnclickListener { category ->
             if (category == "all products") {
                 findNavController().navigate(R.id.action_categoriesFragment_to_allProductsFragment)
             } else {

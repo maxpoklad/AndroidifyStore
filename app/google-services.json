@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "864349524132",
+    "project_id": "androidifystore",
+    "storage_bucket": "androidifystore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864349524132:android:f3d1c7e4e64945c9151631",
+        "android_client_info": {
+          "package_name": "com.poklad.androidifystore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJmfO8cIXdopaO3FhkWFyl7HZjsBEFZvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

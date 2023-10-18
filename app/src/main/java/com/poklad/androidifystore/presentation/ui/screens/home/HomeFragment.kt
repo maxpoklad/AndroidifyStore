@@ -132,11 +132,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     }
 
     private fun initRecyclerWomen() {
-        setUpRecyclerView(
-            womenAdapter,
-            binding.recyclerViewWomenClothes,
-            LinearLayoutManager.HORIZONTAL
-        ) { productItem ->
+        binding.recyclerViewWomenClothes.apply {
+            adapter = womenAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+        womenAdapter.setOnclickListener { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)
             navigateToFragment(
                 R.id.action_fragmentHome_to_productDetailsFragment,
@@ -146,11 +147,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     }
 
     private fun initRecyclerMen() {
-        setUpRecyclerView(
-            menAdapter,
-            binding.recyclerViewMenClothes,
-            LinearLayoutManager.HORIZONTAL
-        ) { productItem ->
+        binding.recyclerViewMenClothes.apply {
+            adapter = menAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+        menAdapter.setOnclickListener { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)
             navigateToFragment(
                 R.id.action_fragmentHome_to_productDetailsFragment,
@@ -166,7 +168,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     private fun renderMenList(productsList: List<ProductItem>) {
         menAdapter.list = productsList
     }
-
     private fun setUpImageSlider() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

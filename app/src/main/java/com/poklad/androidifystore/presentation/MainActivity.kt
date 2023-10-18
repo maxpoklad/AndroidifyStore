@@ -12,10 +12,9 @@ import com.poklad.androidifystore.presentation.ui.base.BaseActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun inflateViewBinding(inflater: LayoutInflater): ActivityMainBinding {
-        return ActivityMainBinding.inflate(layoutInflater)
-    }
-
+        override fun inflateViewBinding(inflater: LayoutInflater): ActivityMainBinding {
+            return ActivityMainBinding.inflate(layoutInflater)
+        }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val navHostFragment =

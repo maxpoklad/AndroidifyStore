@@ -37,24 +37,4 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
             navOptions = null
         )
     }
-
-    protected fun <T> setUpRecyclerView(
-        adapter: BaseAdapter<T>,
-        recyclerView: RecyclerView,
-        @RecyclerView.Orientation orientation: Int,
-        columns: Int = 1,
-        onItemClick: (T) -> Unit
-    ) {
-        recyclerView.run {
-            layoutManager = if (columns > 1) {
-                GridLayoutManager(requireContext(), columns)
-            } else {
-                LinearLayoutManager(requireContext(), orientation, false)
-            }
-            this.adapter = adapter
-        }
-        adapter.setOnclickListener { item ->
-            onItemClick(item)
-        }
-    }
 }
