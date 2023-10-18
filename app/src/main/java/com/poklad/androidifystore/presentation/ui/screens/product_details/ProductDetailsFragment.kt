@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide
 import com.poklad.androidifystore.R
 import com.poklad.androidifystore.StoreApp
 import com.poklad.androidifystore.databinding.FragmentProductDetailsBinding
-import com.poklad.androidifystore.databinding.TestBinding
 import com.poklad.androidifystore.domain.model.ProductItem
 import com.poklad.androidifystore.extensions.invisible
 import com.poklad.androidifystore.extensions.visible
@@ -37,7 +36,7 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding, BaseV
         viewModelFactory
     }
 
-    private val adapter: SpecificCategoryListAdapter by lazy {
+    private val categoryListAdapter: SpecificCategoryListAdapter by lazy {
         SpecificCategoryListAdapter()
     }
 
@@ -119,11 +118,12 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding, BaseV
 
 
     private fun initRecyclerView() {
-        setUpRecyclerView(
-            adapter,
-            binding.horizontalRecyclerView,
-            LinearLayoutManager.HORIZONTAL
-        ) { productItem ->
+        binding.horizontalRecyclerView.apply {
+            adapter = categoryListAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+        categoryListAdapter.setOnclickListener { productItem ->
             val product = ProductItemToProductItemUi().map(productItem)
             navigateToFragment(
                 R.id.action_productDetailsFragment_self,
@@ -133,7 +133,7 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding, BaseV
     }
 
     private fun renderList(productsList: List<ProductItem>) {
-        adapter.list = productsList
+        categoryListAdapter.list = productsList
     }
 
     companion object {

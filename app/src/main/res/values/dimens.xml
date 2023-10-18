@@ -7,6 +7,7 @@
     <dimen name="itemMargin">8dp</dimen>
     <dimen name="projectMargin">16dp</dimen>
     <dimen name="text_size_in_item">18sp</dimen>
+    <dimen name="text_size_hint">14sp</dimen>
     <dimen name="text_price_in_cart_and_favorites">16sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="fragment_horizontal_margin">16dp</dimen>

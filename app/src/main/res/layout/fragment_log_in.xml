@@ -89,7 +89,6 @@
             android:id="@+id/signUpButton"
             style="@style/ButtonBlack"
             android:layout_margin="@dimen/itemMargin"
-            android:fontFamily="@font/open_sans_light"
             android:text="@string/login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
