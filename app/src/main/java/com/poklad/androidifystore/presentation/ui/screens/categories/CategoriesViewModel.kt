@@ -42,22 +42,4 @@ class CategoriesViewModel @Inject constructor(
             _categories.value = emptyList()
         }
     }
-    /* init {
-         fetchCategories()
-     }
-
-     private fun fetchCategories() {
-         launchCoroutineIO {
-             getAllCategoriesUseCase.execute(Unit)
-                 .catch { cause: Throwable ->
-                     _categories.value = Resource.Error(cause)
-                 }
-                 .collect { categoryList ->
-                     val modifyList = categoryList.toMutableList()
-                     modifyList.add(0, "all products")//todo it is ok?
-                     _categories.value = Resource.Success(modifyList)
-                     log("vm $categoryList")
-                 }
-         }
-     }*/
 }

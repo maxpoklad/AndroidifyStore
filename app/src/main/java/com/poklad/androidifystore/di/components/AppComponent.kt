@@ -1,7 +1,9 @@
 package com.poklad.androidifystore.di.components
 
 import android.content.Context
+import com.poklad.androidifystore.di.annotations.ApplicationScope
 import com.poklad.androidifystore.di.modules.DispatcherModule
+import com.poklad.androidifystore.di.modules.FirebaseAuthModule
 import com.poklad.androidifystore.di.modules.NetworkModule
 import com.poklad.androidifystore.di.modules.RepositoryModule
 import com.poklad.androidifystore.di.viewModel.ViewModelFactoryModule
@@ -13,16 +15,16 @@ import com.poklad.androidifystore.presentation.ui.screens.home.HomeFragment
 import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 @Component(
     modules = [
         NetworkModule::class,
         DispatcherModule::class,
         ViewModelModule::class,
         ViewModelFactoryModule::class,
-        RepositoryModule::class]
+        RepositoryModule::class,
+        FirebaseAuthModule::class]
 )
 interface AppComponent {
     @Component.Factory
