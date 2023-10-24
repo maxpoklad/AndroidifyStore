@@ -21,12 +21,15 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.poklad.androidifystore.presentation.ui.screens.auth.signUp.SignUpFragment"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.auth.signup.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment2"
@@ -35,8 +38,8 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        tools:layout="@layout/fragment_forgot_password"
-        android:name="com.poklad.androidifystore.presentation.ui.screens.auth.ForgotPasswordFragment"
+        tools:layout="@layout/fragment_reset_password"
+        android:name="com.poklad.androidifystore.presentation.ui.screens.auth.forgot_password.ResetPasswordFragment"
         android:label="ForgotPasswordFragment" >
         <action
             android:id="@+id/action_forgotPasswordFragment_to_logInFragment"

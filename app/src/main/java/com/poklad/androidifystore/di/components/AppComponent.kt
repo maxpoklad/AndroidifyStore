@@ -10,6 +10,9 @@ import com.poklad.androidifystore.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidifystore.di.viewModel.ViewModelModule
 import com.poklad.androidifystore.presentation.MainActivity
 import com.poklad.androidifystore.presentation.ui.screens.all_products.AllProductsFragment
+import com.poklad.androidifystore.presentation.ui.screens.auth.forgot_password.ResetPasswordFragment
+import com.poklad.androidifystore.presentation.ui.screens.auth.logIn.LogInFragment
+import com.poklad.androidifystore.presentation.ui.screens.auth.signup.SignUpFragment
 import com.poklad.androidifystore.presentation.ui.screens.categories.CategoriesFragment
 import com.poklad.androidifystore.presentation.ui.screens.home.HomeFragment
 import com.poklad.androidifystore.presentation.ui.screens.product_details.ProductDetailsFragment
@@ -37,4 +40,7 @@ interface AppComponent {
     fun inject(fragment: ProductDetailsFragment)
     fun inject(fragment: HomeFragment)
     fun inject(fragment: CategoriesFragment)
+    fun inject(fragment: SignUpFragment)
+    fun inject(fragment: LogInFragment)
+    fun inject(fragment: ResetPasswordFragment)
 }
