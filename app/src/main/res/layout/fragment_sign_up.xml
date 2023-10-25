@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/open_sans_light"
-                android:hint="@string/login" />
+                android:hint="@string/email" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -168,9 +168,9 @@
             android:id="@+id/goToLoginTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginStart="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/projectMargin"
+            android:layout_marginEnd="@dimen/margin_end_sign"
             android:fontFamily="@font/open_sans"
             android:text="@string/login"
             android:textColor="@color/orange"

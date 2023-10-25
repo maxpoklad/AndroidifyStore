@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.poklad.androidifystore.R
 import com.poklad.androidifystore.databinding.ActivityMainBinding
 import com.poklad.androidifystore.presentation.ui.base.BaseActivity
