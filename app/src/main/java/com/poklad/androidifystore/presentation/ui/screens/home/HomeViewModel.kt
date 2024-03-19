@@ -8,7 +8,6 @@ import com.poklad.androidifystore.extensions.log
 import com.poklad.androidifystore.presentation.ui.base.BaseViewModel
 import com.poklad.androidifystore.utils.CoroutineDispatchersProvider
 import com.poklad.androidifystore.utils.PresentationConstants
-import com.poklad.androidifystore.utils.Resource
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,37 +47,12 @@ class HomeViewModel @Inject constructor(
 
     private val _errorMenList = MutableStateFlow<String?>(PresentationConstants.EMPTY_STRING)
     val errorMenList = _errorMenList.asStateFlow()
-    /*    private val _menClothesList =
-            MutableStateFlow<Resource<List<ProductItem>>>(Resource.Loading())
-        val menClothesList = _menClothesList.asStateFlow()
-
-        private val _womenClothesList =
-            MutableStateFlow<Resource<List<ProductItem>>>(Resource.Loading())
-        val womenClothesList = _womenClothesList.asStateFlow()*/
-    /*    private fun fetchData() {
-            launchMain(withLoader = true) {
-                _menClothesList.value = executeWithResource {
-                    withContext(dispatchers.getIO()) {
-                        getProductsByCategory.execute(PresentationConstants.MENS_CLOTHING)
-                    }
-                }
-
-                _womenClothesList.value = executeWithResource {
-                    withContext(dispatchers.getIO()) {
-                        getProductsByCategory.execute(PresentationConstants.WOMENS_CLOTHING)
-                    }
-                }
-            }
-        }*/
-
-
     private fun fetchData() {
         launchMain(withLoader = true) {
             fetchMenClothes(this)
             fetchWomenClothes(this)
         }
     }
-
 
     private suspend fun fetchMenClothes(scope: CoroutineScope) {
         scope.coRunCatching {
@@ -101,5 +75,4 @@ class HomeViewModel @Inject constructor(
             //todo handle error, Resource class?
         }
     }
-
 }

@@ -28,7 +28,7 @@
     <string name="address">Address</string>
     <string name="addres_text">New road 7835, 12926–3874 Kilcoole</string>
     <string name="please_wait">Please wait</string>
-    <string name="login">Login</string>
+    <string name="login">LogIn</string>
     <string name="password">Password</string>
     <string name="login_to_your_account">Login to your Account</string>
     <string name="sign_up">Sign up to app</string>
@@ -52,4 +52,5 @@
     <string name="back">back</string>
     <string name="enter_your_email">Enter your email\n</string>
     <string name="send">Send</string>
+    <string name="email">Email</string>
 </resources>

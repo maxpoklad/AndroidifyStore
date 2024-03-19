@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
+
+    <ProgressBar
+        android:id="@+id/progressBarLogIn"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTint="@color/orange"
+        android:progressTint="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/logoImageView"
@@ -61,6 +75,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/projectMargin"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLogin">
@@ -77,16 +93,16 @@
             android:id="@+id/forgotPassTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/projectMargin"
             android:fontFamily="@font/open_sans"
             android:text="@string/forgot_pass"
             android:textColor="@color/orange"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputPassword" />
 
         <Button
-            android:id="@+id/signUpButton"
+            android:id="@+id/logInButton"
             style="@style/ButtonBlack"
             android:layout_margin="@dimen/itemMargin"
             android:text="@string/login"
@@ -106,20 +122,21 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/signupTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signUpButton" />
+            app:layout_constraintTop_toBottomOf="@id/logInButton" />
 
         <TextView
             android:id="@+id/signupTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginStart="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/projectMargin"
+            android:layout_marginEnd="@dimen/margin_end_sign"
             android:fontFamily="@font/open_sans"
             android:text="@string/signup"
             android:textColor="@color/orange"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/dontHaveTextView"
-            app:layout_constraintTop_toBottomOf="@id/signUpButton" />
+            app:layout_constraintTop_toBottomOf="@id/logInButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
